@@ -1,5 +1,10 @@
 import "./index.css";
-import { sortByMostRecent, showTotal, populateUser } from "./utils";
+import {
+  sortByMostRecent,
+  showTotal,
+  populateUser,
+  showDetails,
+} from "./utils";
 import { Permissions, LoyaltyUser } from "./enums";
 import { Price, Country } from "./types";
 
@@ -105,18 +110,6 @@ populateUser(you.isReturning, you.firstName);
 let authorityStatus: any;
 
 isLoggedIn = true;
-
-function showDetails(
-  authorityStatus: boolean | Permissions,
-  element: HTMLDivElement,
-  price: number
-) {
-  if (authorityStatus) {
-    const priceDisplay = document.createElement("div");
-    priceDisplay.innerHTML = price.toString() + "/night";
-    element.appendChild(priceDisplay);
-  }
-}
 
 for (let i = 0; i < properties.length; i++) {
   const card = document.createElement("div");
