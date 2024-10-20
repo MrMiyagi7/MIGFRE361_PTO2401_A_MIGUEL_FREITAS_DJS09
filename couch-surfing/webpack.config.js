@@ -19,7 +19,7 @@ module.exports = {
     },
     hot: true,
     open: true, // Automatically open the browser
-    port: 3000, // You can set the port here
+    port: 8082, // You can set the port here
   },
   resolve: {
     extensions: [".ts", ".js"],
@@ -34,6 +34,10 @@ module.exports = {
       {
         test: /\.css$/, // Rule for processing CSS files
         use: ["style-loader", "css-loader"],
+      },
+      {
+        test: /\.(png|jpg|jpeg|gif|svg)$/i,
+        type: "asset/resource",
       },
     ],
   },
