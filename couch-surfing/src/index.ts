@@ -9,6 +9,7 @@ import {
 import { Permissions, LoyaltyUser } from "./enums";
 import { Price, Country } from "./types";
 import { Review, Property } from "./interfaces";
+import MainProperty from "./classes";
 
 const propertyContainer = document.querySelector(".properties")!;
 const footer = document.querySelector(".footer")!;
@@ -154,17 +155,6 @@ footer.innerHTML =
   " " +
   currentLocation[2] +
   "°";
-
-class MainProperty {
-  src: string;
-  title: string;
-  reviews: Review[];
-  constructor(src: string, title: string, reviews: Review[]) {
-    this.src = src;
-    this.title = title;
-    this.reviews = reviews;
-  }
-}
 
 let yourMainProperty = new MainProperty(
   "images/italian-property.jpg",
