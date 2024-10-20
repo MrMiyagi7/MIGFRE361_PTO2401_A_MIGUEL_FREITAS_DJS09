@@ -4,7 +4,7 @@ import "./index.css";
 // Write a function that will only accept numbers and attend to
 // all TypeScript weakness flags.
 // : number
-const reviewTotalDisplay = document.querySelector("#reviews");
+const reviewTotalDisplay = document.querySelector("#reviews")!;
 
 const reviews = [
   {
@@ -26,3 +26,9 @@ const reviews = [
     date: "27-03-2021",
   },
 ];
+
+function showTotal(reviewsTotal: number) {
+  reviewTotalDisplay.innerHTML = reviewsTotal.toString();
+}
+
+showTotal(reviews.length);
