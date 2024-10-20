@@ -1,10 +1,17 @@
+import { LoyaltyUser } from "./enums";
+
 const reviewTotalDisplay = document.querySelector("#reviews")!;
 
 const returningUserDisplay = document.querySelector("#returning-user")!;
 const userNameDisplay = document.querySelector("#user")!;
 
 export function sortByMostRecent(
-  reviews: { name: string; stars: number; loyaltyUser: boolean; date: string }[]
+  reviews: {
+    name: string;
+    stars: number;
+    loyaltyUser: LoyaltyUser;
+    date: string;
+  }[]
 ) {
   return reviews.sort((a, b) => {
     // Convert the date strings to Date objects for comparison
@@ -17,9 +24,9 @@ export function sortByMostRecent(
 export function showTotal(
   reviewsTotal: number,
   reviewName: String,
-  isLoyalty: boolean
+  isLoyalty: LoyaltyUser
 ) {
-  const iconDisplay = isLoyalty ? "⭐" : "";
+  const iconDisplay = LoyaltyUser.GOLD_USER ? "⭐" : "";
   reviewTotalDisplay.innerHTML =
     "Total number of reviews " +
     reviewsTotal.toString() +
