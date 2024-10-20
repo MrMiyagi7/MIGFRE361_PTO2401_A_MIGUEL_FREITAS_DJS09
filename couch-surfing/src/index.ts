@@ -8,6 +8,7 @@ import {
 } from "./utils";
 import { Permissions, LoyaltyUser } from "./enums";
 import { Price, Country } from "./types";
+import { Review } from "./interfaces";
 
 const propertyContainer = document.querySelector(".properties")!;
 const footer = document.querySelector(".footer")!;
@@ -17,12 +18,7 @@ const reviewContainer = document.querySelector(".reviews")!;
 
 let isLoggedIn: boolean;
 
-const reviews: {
-  name: string;
-  stars: number;
-  loyaltyUser: LoyaltyUser;
-  date: string;
-}[] = [
+const reviews: Review[] = [
   {
     name: "Sheia",
     stars: 5,
