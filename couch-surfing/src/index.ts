@@ -5,6 +5,8 @@ import { Permissions, LoyaltyUser } from "./enums";
 const propertyContainer = document.querySelector(".properties")!;
 const footer = document.querySelector(".footer")!;
 
+let isLoggedIn: boolean;
+
 const reviews: {
   name: string;
   stars: number;
@@ -99,15 +101,31 @@ const properties: {
 
 populateUser(you.isReturning, you.firstName);
 
+let authorityStatus: any;
+
+isLoggedIn = true;
+
+function showDetails(
+  authorityStatus: boolean | Permissions,
+  element: HTMLDivElement,
+  price: number
+) {
+  if (authorityStatus) {
+    const priceDisplay = document.createElement("div");
+    priceDisplay.innerHTML = price.toString() + "/night";
+    element.appendChild(priceDisplay);
+  }
+}
+
 for (let i = 0; i < properties.length; i++) {
   const card = document.createElement("div");
   card.classList.add("card");
   card.innerHTML = properties[i].title;
   const image = document.createElement("img");
   image.setAttribute("src", properties[i].image);
-  console.log(image);
   card.appendChild(image);
   propertyContainer.appendChild(card);
+  showDetails(isLoggedIn, card, properties[i].price);
 }
 
 let currentLocation: [string, string, number] = ["London", "11:35", 17];
