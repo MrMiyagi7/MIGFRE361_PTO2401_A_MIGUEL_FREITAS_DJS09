@@ -39,12 +39,18 @@ function sortByMostRecent(
 }
 const sortedReviews = sortByMostRecent(reviews);
 
-function showTotal(reviewsTotal: number, reviewName: String) {
+function showTotal(
+  reviewsTotal: number,
+  reviewName: String,
+  isLoyalty: boolean
+) {
+  const iconDisplay = isLoyalty ? "⭐" : "";
   reviewTotalDisplay.innerHTML =
     "Total number of reviews " +
     reviewsTotal.toString() +
     "| Last reviewed by  " +
-    reviewName;
+    reviewName +
+    iconDisplay;
 }
 
-showTotal(reviews.length, sortedReviews[0].name);
+showTotal(reviews.length, sortedReviews[0].name, sortedReviews[0].loyaltyUser);
