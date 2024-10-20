@@ -1,6 +1,7 @@
 import "./index.css";
 import { sortByMostRecent, showTotal, populateUser } from "./utils";
 import { Permissions, LoyaltyUser } from "./enums";
+import { Price, Country } from "./types";
 
 const propertyContainer = document.querySelector(".properties")!;
 const footer = document.querySelector(".footer")!;
