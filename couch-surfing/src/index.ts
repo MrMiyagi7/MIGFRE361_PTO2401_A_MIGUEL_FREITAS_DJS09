@@ -4,12 +4,16 @@ import {
   showTotal,
   populateUser,
   showDetails,
+  getTopTwoReviews,
 } from "./utils";
 import { Permissions, LoyaltyUser } from "./enums";
 import { Price, Country } from "./types";
 
 const propertyContainer = document.querySelector(".properties")!;
 const footer = document.querySelector(".footer")!;
+const container = document.querySelector(".container")!;
+const button = document.querySelector("button")!;
+const reviewContainer = document.querySelector(".reviews")!;
 
 let isLoggedIn: boolean;
 
@@ -122,6 +126,29 @@ for (let i = 0; i < properties.length; i++) {
   showDetails(isLoggedIn, card, properties[i].price);
 }
 
+let count = 0;
+function addReviews(
+  array: {
+    name: string;
+    stars: number;
+    loyaltyUser: LoyaltyUser;
+    date: string;
+  }[]
+): void {
+  if (!count) {
+    count++;
+    const topTwo = getTopTwoReviews(array);
+    for (let i = 0; i < topTwo.length; i++) {
+      const card = document.createElement("div");
+      card.classList.add("review-card");
+      card.innerHTML = topTwo[i].stars + " stars from " + topTwo[i].name;
+      reviewContainer.appendChild(card);
+    }
+    container.removeChild(button);
+  }
+}
+
+button.addEventListener("click", () => addReviews(reviews));
 let currentLocation: [string, string, number] = ["London", "11:35", 17];
 footer.innerHTML =
   currentLocation[0] +
